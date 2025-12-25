@@ -13,4 +13,10 @@ public class ExitCommand implements Command {
 		return "Exits program";
 	}
 
+	@Override
+	public boolean execute(String[] args) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

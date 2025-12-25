@@ -5,10 +5,14 @@ import java.util.Map;
 
 import datastreamer.command.Command;
 import datastreamer.command.ExitCommand;
+import datastreamer.command.FileLoaderCommand;
 import datastreamer.command.FunctionCommand;
 import datastreamer.command.ShowFilesCommand;
 
+// TODO execute file input into mmemory
 public class Commander {
+	public final static String LOAD_FILE = "lf";
+
 	private final StreamerTerminal terminal;
 	private FileManager fileManager;
 	private final Map<String, Command> commands;
@@ -24,14 +28,24 @@ public class Commander {
 		commands.put(":q", new ExitCommand());
 		commands.put("sf", new ShowFilesCommand(terminal, fileManager));
 		commands.put("f", new FunctionCommand());
+		commands.put(LOAD_FILE, new FileLoaderCommand(terminal, fileManager));
 	}
 
 	public boolean execute(String input) {
-		Command command = commands.get(input);
+		CommandParser commandParser = new CommandParser(input);
+		commandParser.parse(); // Important to have tho in design sucks
+
+		Command command = commands.get(commandParser.getCommandKey());
 
 		if (command == null) {
 			terminal.println("Komanda nerasta");
 			return false;
+		}
+
+		String[] restArgs = commandParser.getRestArgs();
+
+		if (restArgs.length > 0) {
+			return command.execute(commandParser.getRestArgs());
 		}
 
 		return command.execute();

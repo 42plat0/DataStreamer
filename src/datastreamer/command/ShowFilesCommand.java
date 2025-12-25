@@ -16,8 +16,9 @@ public class ShowFilesCommand implements Command {
 
 	@Override
 	public boolean execute() {
-		for (String fileName : fileManager.listFiles()) {
-			terminal.println(fileName);
+		String[] files = fileManager.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			terminal.println(i + 1 + ". " + files[i]);
 		}
 
 		return false;
@@ -26,6 +27,12 @@ public class ShowFilesCommand implements Command {
 	@Override
 	public String getDescription() {
 		return "Parodyti failu vardus";
+	}
+
+	@Override
+	public boolean execute(String[] args) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

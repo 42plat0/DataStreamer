@@ -14,4 +14,10 @@ public class FunctionCommand implements Command {
 		return "Funkcija";
 	}
 
+	@Override
+	public boolean execute(String[] args) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

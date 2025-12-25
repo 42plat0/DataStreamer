@@ -1,5 +1,10 @@
 package datastreamer.main;
 
+/*_
+ * 
+ * Streamer app with multiple functionality or app parts. Now it's made of terminal for input design and running functionality. File manager is responsible for handling file system. Commander it seems purely is input control and handling functions.
+ * 
+ * */
 import java.io.File;
 import java.net.URISyntaxException;
 
@@ -19,35 +24,6 @@ public class DataStreamerApp {
 			terminal = new StreamerTerminal("DataStreamer", "%");
 			fileManager = new FileManager(getDataFolder());
 			commander = new Commander(terminal, fileManager);
-//			final File folder = new File();
-//			Uploader uploader = new Uploader(folder);
-//			TerminalBuilder terminalBuilder = TerminalBuilder.builder();
-//			LineReaderBuilder lineReader = LineReaderBuilder.builder();
-//			// Create a terminal
-//			Terminal terminal = terminalBuilder.system(true).build();
-//			// Create line reader
-//			LineReader reader = lineReader.terminal(terminal).build();
-//
-//			while (true) {
-//				// Prompt and read input
-//				String line = reader.readLine("> ");
-//
-//				// Exit if requested
-//				if ("exit".equalsIgnoreCase(line)) {
-//					break;
-//				}
-//				if ("where".equalsIgnoreCase(line)) {
-//					System.out.println(System.getProperty("user.dir"));
-//				}
-//
-//				// Echo the line back to the user
-//				terminal.writer().println("You entered: " + line);
-//				terminal.flush();
-//			}
-//
-//			System.out.println("Goodbye");
-//			terminal.writer().println("Goodbye!");
-//			terminal.close();
 			terminal.start(commander);
 
 		} catch (Exception e) {
