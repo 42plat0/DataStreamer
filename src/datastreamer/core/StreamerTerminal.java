@@ -1,5 +1,7 @@
 package datastreamer.core;
 
+import java.io.IOException;
+
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
@@ -22,7 +24,7 @@ public class StreamerTerminal {
 		this.prompt = programName + " " + promptSymbol;
 	}
 
-	public void start(Commander commander) throws Exception {
+	public void start(Commander commander) throws IOException {
 		// Create a terminal
 		terminal = TerminalBuilder.builder().system(true).build();
 		// Create line reader

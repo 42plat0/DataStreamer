@@ -1,5 +1,8 @@
-package datastreamer.command;
+package datastreamer.command.impl;
 
+import java.util.List;
+
+import datastreamer.command.Command;
 import datastreamer.core.FileManager;
 import datastreamer.core.StreamerTerminal;
 import lombok.AllArgsConstructor;
@@ -15,7 +18,7 @@ public class ShowFilesCommand implements Command {
 	private FileManager fileManager;
 
 	@Override
-	public boolean execute() {
+	public boolean execute(List<String> args) {
 		for (String fileName : fileManager.listFiles()) {
 			terminal.println(fileName);
 		}
